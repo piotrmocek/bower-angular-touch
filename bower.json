@@ -1,5 +1,5 @@
 {
-  "name": "angular-touch",
+  "name": "angular-touch-disableable",
   "version": "1.6.9",
   "license": "MIT",
   "main": "./angular-touch.js",

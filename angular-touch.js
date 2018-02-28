@@ -32,6 +32,13 @@ function nodeName_(element) {
   return angular.lowercase(element.nodeName || (element[0] && element[0].nodeName));
 }
 
+function swipePermitted(event) {
+  function isDisabler(item) {
+    return item.attributes && item.attributes.hasOwnProperty('disable-ng-swipe')
+  }
+  return !event.originalEvent.path.filter(isDisabler).length;
+}
+
 /**
  * @ngdoc provider
  * @name $touchProvider
@@ -292,7 +299,7 @@ ngTouch.factory('$swipe', [function() {
           return;
         } else {
           // Prevent the browser from scrolling.
-          event.preventDefault();
+          if (swipePermitted(event)) event.preventDefault();
           if (eventHandlers['move']) {
             eventHandlers['move'](coords, event);
           }
@@ -302,6 +309,7 @@ ngTouch.factory('$swipe', [function() {
       element.on(getEvents(pointerTypes, 'end'), function(event) {
         if (!active) return;
         active = false;
+        if (!swipePermitted(event)) return;
         if (eventHandlers['end']) {
           eventHandlers['end'](getCoordinates(event), event);
         }

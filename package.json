@@ -1,7 +1,7 @@
 {
-  "name": "angular-touch",
+  "name": "angular-touch-disableable",
   "version": "1.6.9",
-  "description": "AngularJS module for touch events and helpers for touch-enabled devices",
+  "description": "AngularJS module for touch events and helpers for touch-enabled devices. Swipe event could be disabled with disable-ng-swipe attribute.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,7 +25,7 @@
   "homepage": "http://angularjs.org",
   "jspm": {
     "shim": {
-      "angular-touch": {
+      "angular-touch-disableable": {
         "deps": ["angular"]
       }
     }

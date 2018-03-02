@@ -36,7 +36,10 @@ function swipePermitted(event) {
   function isDisabler(item) {
     return item.attributes && item.attributes.hasOwnProperty('disable-ng-swipe')
   }
-  return !event.originalEvent.path.filter(isDisabler).length;
+  var originalEvent = event.originalEvent;
+  var path = originalEvent.path || (originalEvent.composedPath && originalEvent.composedPath());
+  if (!path) return true;
+  return !path.filter(isDisabler).length;
 }
 
 /**

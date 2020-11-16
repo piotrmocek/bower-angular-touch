@@ -5,6 +5,6 @@
   "main": "./angular-touch.js",
   "ignore": [],
   "dependencies": {
-    "angular": "1.6.9"
+    "angular": "^1.6.9"
   }
 }
